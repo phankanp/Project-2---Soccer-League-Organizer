@@ -1,8 +1,8 @@
 import java.io.IOException;
 
-import League.League;
-import League.Player;
-import League.Players;
+import league.League;
+import league.Player;
+import league.Players;
 
 public class LeagueManager {
 
