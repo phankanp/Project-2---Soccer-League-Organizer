@@ -1,4 +1,4 @@
-package League;
+package league;
 
 import java.io.Serializable;
 

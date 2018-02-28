@@ -1,4 +1,4 @@
-package League;
+package league;
 
 public class Players {
 

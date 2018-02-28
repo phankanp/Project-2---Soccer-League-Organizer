@@ -1,4 +1,4 @@
-package League;
+package league;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +45,7 @@ public class Team implements Comparable<Team> {
 
 	@Override
 	public int compareTo(Team other) {
+		
 		// TODO Auto-generated method stub
 		return this.getmTeamName().compareTo(other.getmTeamName());
 	}
