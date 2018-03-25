@@ -485,7 +485,8 @@ public class League {
 		return mAllAvailablePlayers.get(index);
 	}
 
-	// Replaces player in the league with a player from the wait list.
+	// Replaces player in the league with a player from the wait list. If player to be replace is on a team
+	// removes the chosen player from the team and adds wait list player to the team. 
 	private void replacePlayer() throws IOException {
 
 		if (waitingList.isEmpty()) {
@@ -500,9 +501,18 @@ public class League {
 			System.out.println("Select a player to remove from the league");
 			printHeader();
 			Player removePlayer = availableFreePlayers();
-
-			allAvailablePlayers.add(addPlayer);
-			allAvailablePlayers.remove(removePlayer);
+			
+			for (Team team : availableTeams) {
+				if (team.playersOnTeam().contains(removePlayer)) {
+					team.removePlayer(removePlayer);
+					team.addPlayer(addPlayer);
+					waitingList.remove(addPlayer);
+				} else {
+					allAvailablePlayers.remove(removePlayer);
+					allAvailablePlayers.add(addPlayer);
+					waitingList.remove(addPlayer);
+				}
+			}
 
 			System.out.printf("Removed %s %s and added %s %s to the league.%n", removePlayer.getFirstName(),
 					removePlayer.getLastName(), addPlayer.getFirstName(), addPlayer.getLastName());
