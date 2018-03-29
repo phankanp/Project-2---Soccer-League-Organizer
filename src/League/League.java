@@ -52,7 +52,9 @@ public class League {
 
 	}
 
-	// Iterates through menu map, prints key/value options, and reads in user choice
+	/** 
+	 * Iterates through menu map, prints key/value options, and reads in user choice 
+	 */
 	private String promptAction() throws IOException {
 		for (Map.Entry<String, String> option : mMenu.entrySet()) {
 			System.out.printf("%s - %s %n", option.getKey(), option.getValue());
@@ -62,14 +64,18 @@ public class League {
 		return choice.trim().toLowerCase();
 	}
 
-	// Prints a header for player selection
+	/**
+	 * Prints a header for player selection
+	 */
 	private void printHeader() {
 		String header1 = "Index No.", header2 = "First Name", header3 = "Last Name", header4 = "Height in Inches",
 				header5 = "Has Experience(T/F)";
 		System.out.format("%n%-11s %-17s %-12s %-21s %16s %n", header1, header2, header3, header4, header5);
 	}
 
-	// Checks user input and runs appropriate function
+	/**
+	 * Checks user input and runs appropriate function
+	 */
 	public void run() {
 		String choice = " ";
 
@@ -128,7 +134,11 @@ public class League {
 		} while (!choice.equals("10"));
 	}
 
-	// Prompts user for team name and coach name. Return new Team object.
+	/**
+	 * Prompts user for team name and coach name.
+	 * @return  Return new Team object.
+	 * @throws IOException
+	 */
 	private Team promptTeam() throws IOException {
 		System.out.print("Enter the team name: ");
 		String teamName = br.readLine();
@@ -138,8 +148,9 @@ public class League {
 		return new Team(teamName, coachName);
 	}
 
-	// Checks if max team limit has been reached and calls promptTeam() and adds
-	// team to availableTeams set.
+	/** 
+	 * Checks if max team limit has been reached and calls promptTeam() and adds team to availableTeams set.
+	 */
 	private void createTeam() throws IOException {
 		if (availableTeams.size() == MAX_TEAMS) {
 			System.out.printf("Can not add another team. Reached max team limit.%n%n");
@@ -150,17 +161,20 @@ public class League {
 		}
 	}
 
-	// Iterates through the given array of players and adds each player to
-	// allAvailablePlayers set.
+	/**
+	 * Iterates through the given array of players and adds each player to allAvailablePlayers set.
+	 */
 	private void getAllAvailablePlayers() {
 		for (Player player : mPlayers) {
 			allAvailablePlayers.add(player);
 		}
 	}
 
-	// Iterates through all available players in the league and adds players to a
-	// list of strings. Uses helper function promptForIndex
-	// to return an indexed list.
+	/**
+	 * Iterates through all available players in the league and adds players to a list of strings. 
+	 * @return Uses helper function promptForIndex to return an indexed list.
+	 * @throws IOException
+	 */
 	public Player availableFreePlayers() throws IOException {
 		List<Player> mAllAvailablePlayers = new ArrayList<>(allAvailablePlayers);
 		List<String> mPlayers = new ArrayList<>();
@@ -173,9 +187,11 @@ public class League {
 		return mAllAvailablePlayers.get(index);
 	}
 
-	// Iterates through all available teams in the league and adds teams to a list
-	// of strings. Uses helper function promptForIndex
-	// to return an indexed list.
+	/**
+	 * Iterates through all available teams in the league and adds teams to a list of strings. 
+	 * @return Uses helper function promptForIndex to return an indexed list.
+	 * @throws IOException
+	 */
 	private Team availableTeams() throws IOException {
 		List<Team> mAvailableTeams = new ArrayList<Team>(availableTeams);
 		List<String> mTeams = new ArrayList<>();
@@ -188,8 +204,10 @@ public class League {
 		return mAvailableTeams.get(index);
 	}
 
-	// Adds user choice of player to user choice of team, after checking if teams
-	// and player space on teams are available
+	/**
+	 * Adds user choice of player to user choice of team, after checking if teams and player space on teams are available
+	 * @throws IOException
+	 */
 	private void addPlayersToTeam() throws IOException {
 
 		if (availableTeams.size() == 0) {
@@ -219,9 +237,12 @@ public class League {
 
 	}
 
-	// Iterates through players on a team and adds to a list of strings. Uses helper
-	// function promptForIndex
-	// to return an indexed list.
+	/**
+	 * Iterates through players on a team and adds to a list of strings. 
+	 * @param players
+	 * @return Uses helper function promptForIndex to return an indexed list.
+	 * @throws IOException
+	 */
 	private Player playersOnTeam(List<Player> players) throws IOException {
 		List<Player> mPlayersOnTeam = new ArrayList<>(players);
 		List<String> mPlayers = new ArrayList<>();
@@ -235,8 +256,10 @@ public class League {
 		return mPlayersOnTeam.get(index);
 	}
 
-	// Removes user choice of player from user choice of team, after checking if
-	// there are teams in the league and player on teams
+	/**
+	 * Removes user choice of player from user choice of team, after checking if there are teams in the league and player on teams
+	 * @throws IOException
+	 */
 	private void removePlayersFromTeam() throws IOException {
 		if (availableTeams.isEmpty()) {
 			System.out.printf("There are no teams in the league.%n%n");
@@ -263,7 +286,10 @@ public class League {
 
 	}
 
-	// Prints player names and height on a team. Groups players by height.
+	/** 
+	 * Prints player names and height on a team. Groups players by height.
+	 * @throws IOException
+	 */
 	private void viewHeightReport() throws IOException {
 		if (availableTeams.isEmpty()) {
 			System.out.printf("There are no teams in the league.%n%n");
@@ -289,8 +315,10 @@ public class League {
 		}
 	}
 
-	// Prints balance report, containing team name, the number of
-	// experienced/inexperience players, and percent of experienced players
+	/**
+	 * Prints balance report, containing team name, the number of experienced/inexperience players, 
+	 * and percent of experienced players
+	 */
 	private void leagueBalanceReport() {
 		if (availableTeams.isEmpty()) {
 			System.out.printf("There are no teams in the league.%n%n");
@@ -311,7 +339,10 @@ public class League {
 
 	}
 
-	// Prints the first and last names of players on a specific team
+	/**
+	 * Prints the first and last names of players on a specific team
+	 * @throws IOException
+	 */
 	public void printRoster() throws IOException {
 		if (availableTeams.isEmpty()) {
 			System.out.printf("There are no teams in the league.%n%n");
@@ -338,7 +369,12 @@ public class League {
 		}
 	}
 
-	// Helper function, which indexes a list and takes user input
+	/**
+	 * Helper function, which indexes a list and takes user input
+	 * @param options
+	 * @return Returns index selection
+	 * @throws IOException
+	 */
 	private int promptForIndex(List<String> options) throws IOException {
 		int choice = 0;
 		int returnChoice = 0;
@@ -371,7 +407,9 @@ public class League {
 
 	}
 
-	// Returns a set of all experienced players in the league
+	/**
+	 * @return Returns a set of all experienced players in the league
+	 */
 	public Set<Player> experiencedPlayers() {
 		Set<Player> experiencedPlayers = new TreeSet<>();
 
@@ -384,7 +422,9 @@ public class League {
 		return experiencedPlayers;
 	}
 
-	// Returns a set of all inexperienced players in the league
+	/**
+	 * @return Returns a set of all inexperienced players in the league
+	 */
 	private Set<Player> inExperiencedPlayers() {
 		Set<Player> inExperiencedPlayers = new TreeSet<>();
 
@@ -397,8 +437,11 @@ public class League {
 		return inExperiencedPlayers;
 	}
 
-	// Automatically builds 3 teams and adds player from allAvailablePlayers to
-	// teams, making teams as fair as possible based on previous experience
+	/**
+	 * Automatically builds 3 teams and adds player from allAvailablePlayers to teams, 
+	 * making teams as fair as possible based on previous experience
+	 * @throws IOException
+	 */
 	private void autoBuildTeams() throws IOException {
 		String teamName = "Team";
 		String coachName = "Coach";
@@ -451,7 +494,10 @@ public class League {
 
 	}
 
-	// Takes user input for new player and adds player to the wait list
+	/**
+	 *  Takes user input for new player and adds player to the wait list
+	 * @throws IOException
+	 */
 	private void addPlayerToWaitList() throws IOException {
 		Scanner scanner = new Scanner(System.in);
 
@@ -470,9 +516,11 @@ public class League {
 
 	}
 
-	// Iterates through players on the wait list and adds to a list of strings. Uses
-	// helper function promptForIndex
-	// to return an indexed list.
+	/**
+	 * Iterates through players on the wait list and adds to a list of strings. 
+	 * @return Uses helper function promptForIndex to return an indexed list.
+	 * @throws IOException
+	 */
 	private Player availableWaitListPlayers() throws IOException {
 		List<Player> mAllAvailablePlayers = new ArrayList<>(waitingList);
 		List<String> mPlayers = new ArrayList<>();
@@ -485,8 +533,10 @@ public class League {
 		return mAllAvailablePlayers.get(index);
 	}
 
-	// Replaces player in the league with a player from the wait list. If player to be replace is on a team
-	// removes the chosen player from the team and adds wait list player to the team. 
+	/**
+	 *  Replaces player in the league with a player from the wait list. If player to be replace is on a team removes the chosen player from the team and adds wait list player to the team. 
+	 * @throws IOException
+	 */
 	private void replacePlayer() throws IOException {
 
 		if (waitingList.isEmpty()) {

@@ -35,7 +35,9 @@ public class Team implements Comparable<Team> {
 		mPlayers.remove(player);
 	}
 	
-	// Returns a list of players on a specific team
+	/**
+	 * @return Returns a list of players on a specific team
+	 */
 	public List<Player> playersOnTeam() {
 		List<Player> mPlayersOnTeams = new ArrayList<>();
 		mPlayersOnTeams.addAll(mPlayers);
@@ -50,7 +52,9 @@ public class Team implements Comparable<Team> {
 		return this.getmTeamName().compareTo(other.getmTeamName());
 	}
 	
-	// Creates a map of player height to players with the same height
+	/**
+	 * @return Creates a map of player height to players with the same height
+	 */
 	public Map<Integer, List<Player>> heightForPlayers() {
 		Map<Integer, List<Player>> heightForPlayers = new TreeMap<>();
 		for (Player player : mPlayers) {
@@ -64,7 +68,9 @@ public class Team implements Comparable<Team> {
 		return heightForPlayers;
 	}
 	
-	// Creates a map of experiences/inexperienced players and the number of players in each group
+	/**
+	 * @return Creates a map of experiences/inexperienced players and the number of players in each group
+	 */
 	public Map<String, Integer> previousExperience() {
 		Map<String, Integer> previousExperience = new TreeMap<>();
 		
@@ -86,7 +92,9 @@ public class Team implements Comparable<Team> {
 
 	}
 	
-	// Returns the average  for the number of experience players on a team
+	/**
+	 * @return Returns the average for the number of experience players on a team
+	 */
 	public int avgTeamExperience() {
 		double hasExperience = 0;
 		double noExperience = 0;
@@ -112,7 +120,9 @@ public class Team implements Comparable<Team> {
 		}
 	}
 	
-	// Returns the average  for the number of inexperience players on a team
+	/**
+	 * @return Returns the average for the number of inexperience players on a team
+	 */
 	public int noTeamExperience() {
 		double hasExperience = 0;
 		double noExperience = 0;
