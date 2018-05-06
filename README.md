@@ -1,5 +1,7 @@
 # Steps
 
+A tool to help a soccer league create teams, assign players to them fairly and then print out team rosters. Applied knowledge of arrays, sorting, the Java Collections Framework, and data structures.
+
 Teams can have a maximum of 11 players each.
 
 - As an organizer, I should be presented with a menu item that allows me to create a new team, so that I can build the season.
