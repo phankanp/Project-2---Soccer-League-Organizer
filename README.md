@@ -1,6 +1,6 @@
-# Steps
-
 A tool to help a soccer league create teams, assign players to them fairly and then print out team rosters. Applied knowledge of arrays, sorting, the Java Collections Framework, and data structures.
+
+# Steps
 
 Teams can have a maximum of 11 players each.
 
